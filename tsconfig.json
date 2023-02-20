@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",                    
+    "lib": ["DOM", "ES2019"],
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "allowJs": true,
+    "rootDir": "src",
+    "strict": true,         
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  "noEmit": true
+}

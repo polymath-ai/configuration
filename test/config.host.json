@@ -1,0 +1,11 @@
+{
+  "endpoint": "https://polymath.glazkov.com/",
+  "info": {
+    "headername": "Dimitri's",
+    "placeholder": "Search for a movie",
+    "fun_queries": [
+      "Tell me about compoundin loops",
+      "What is intention?"
+    ]
+  }
+}

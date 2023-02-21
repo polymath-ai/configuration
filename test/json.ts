@@ -1,7 +1,7 @@
 import test from 'ava';
 
 import { JSONStore } from '../src/json.js';
-import { Config, ConfigType } from '../src/index.js';
+import { Config, ConfigType, ConfigHandler } from '../src/index.js';
 
 
 const info_schema = {
@@ -26,7 +26,7 @@ const host_schema = {
 };
 
 export type HostType = ConfigType<typeof host_schema>;
-export const Host = Config(host_schema, 'host');
+export const Host: ConfigHandler<HostType> = Config(host_schema, 'host');
 
 test('load JSON file', async t => {
   const store = new JSONStore('./test');

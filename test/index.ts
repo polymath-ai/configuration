@@ -1,5 +1,5 @@
 import test from 'ava';
-import { Config, ConfigType } from '../src/index.js';
+import { Config, ConfigHandler, ConfigType } from '../src/index.js';
 
 const simple_schema = {
   type: "object",
@@ -18,7 +18,7 @@ const simple_schema = {
 };
 
 type SimpleConfigType = ConfigType<typeof simple_schema>;
-const SimpleConfig = Config(simple_schema, 'simple');
+const SimpleConfig: ConfigHandler<SimpleConfigType> = Config(simple_schema, 'simple');
 
 test('simple config', t => {
   let simple_args: any = {
@@ -51,7 +51,7 @@ const required_field_schema = {
 };
 
 type RequiredFieldConfigType = ConfigType<typeof required_field_schema>;
-const RequiredFieldConfig = Config(required_field_schema);
+const RequiredFieldConfig: ConfigHandler<RequiredFieldConfigType> = Config(required_field_schema);
 
 test('required fields supplied', t => {
   t.true(RequiredFieldConfig.validate({ bar: 'bar' }));

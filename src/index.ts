@@ -3,7 +3,13 @@ import { JTDDataType } from 'ajv/dist/core';
 
 export type ConfigType<S> = JTDDataType<S>;
 
-export function Config<T>(schema: any, location?: string) {
+export interface ConfigHandler<T> {
+  location?: string;
+  validate: (args: any) => boolean;
+  create<T>(args: any): T;
+}
+
+export function Config<T>(schema: any, location?: string): ConfigHandler<T> {
   const validator = new Ajv({ useDefaults: true }).compile<T>(schema);
   return {
     location: location,

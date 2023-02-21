@@ -15,11 +15,10 @@ const simple_schema = {
       default: {},
     },
   },
-}; 
+};
 
 type SimpleConfigType = ConfigType<typeof simple_schema>;
 const SimpleConfig = Config(simple_schema, 'simple');
-
 
 test('simple config', t => {
   let simple_args: any = {
@@ -47,8 +46,9 @@ const required_field_schema = {
     bar: { type: "string" },
     baz: { type: "integer", default: 42 },
   },
+  additionalProperties: false,
   required: ['bar']
-}; 
+};
 
 type RequiredFieldConfigType = ConfigType<typeof required_field_schema>;
 const RequiredFieldConfig = Config(required_field_schema);
@@ -61,10 +61,6 @@ test('complain when required field is missing', t => {
   t.false(RequiredFieldConfig.validate({}));
 });
 
-
-// class RequiredFieldConfig extends Config {
-//   bar: string;
-//   baz: number = 42;
-
-//   constructor(args: any) { super(args) }
-// }
+test('complain about extra args', t => {
+  t.false(RequiredFieldConfig.validate({ bar: 'bar', baz: 0, extra: 'extra' }));
+});

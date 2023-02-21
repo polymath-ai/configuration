@@ -25,8 +25,8 @@ const host_schema = {
   }
 };
 
-export type HostType = ConfigType<typeof host_schema>;
-export const Host: ConfigHandler<HostType> = Config(host_schema, 'host');
+type HostType = ConfigType<typeof host_schema>;
+const Host: ConfigHandler<HostType> = Config(host_schema, 'host');
 
 test('load JSON file', async t => {
   const store = new JSONStore('./test');

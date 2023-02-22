@@ -1,5 +1,5 @@
 {
-  "name": "configuration",
+  "name": "@polymath-ai/configuration",
   "version": "0.0.1",
   "description": "Configuration system for Polymath",
   "main": "src/index.ts",

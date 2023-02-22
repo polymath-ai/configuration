@@ -1,7 +1,7 @@
 import test from 'ava';
 
 import { JSONStore } from '../src/json.js';
-import { Config, ConfigType, ConfigHandler } from '../src/index.js';
+import { Config, ConfigType, ConfigHandler } from '../src/config.js';
 
 
 const info_schema = {
@@ -28,8 +28,8 @@ const host_schema = {
 type HostType = ConfigType<typeof host_schema>;
 const Host: ConfigHandler<HostType> = Config(host_schema, 'host');
 
-test('load JSON file', async t => {
+test('load JSON file', t => {
   const store = new JSONStore('./test');
-  const config: HostType = await store.load(Host);
+  const config: HostType = store.load(Host);
   t.is(config.endpoint, 'https://polymath.glazkov.com/');
 });

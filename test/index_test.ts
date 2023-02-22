@@ -1,5 +1,5 @@
 import test from 'ava';
-import { Config, ConfigHandler, ConfigType } from '../src/index.js';
+import { Config, ConfigHandler, ConfigType } from '../src/config.js';
 
 const simple_schema = {
   type: "object",
